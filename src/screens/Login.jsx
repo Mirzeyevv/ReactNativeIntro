@@ -13,53 +13,32 @@ const Login = () => {
   };
 
   return (
-    <ScrollView>
-      <View
-        style={{
-          flex: 1,
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Text style={{ fontSize: 24, fontWeight: '600' }}>Login</Text>
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <View className='flex-1 justify-center items-center'>
+        <Text className='text-2xl font-semibold'>Login</Text>
         <TextInput
           onChangeText={text => {
             handleInput(text, 'email');
           }}
-          placeholder="Enter Email"
-          style={{
-            borderWidth: 1,
-            borderColor: 'lightgray',
-            width: 350,
-            paddingLeft: 16,
-            marginTop: 16,
-          }}
-        ></TextInput>
+          placeholder='Enter Email'
+          className='border border-gray-300 w-[350px] pl-4 mt-4 rounded-md h-12'
+        />
 
-        <View
-          style={{
-            borderWidth: 1,
-            borderColor: 'lightgray',
-            width: 350,
-            marginTop: 16,
-            position: 'relative',
-          }}
-        >
+        <View className='border border-gray-300 w-[350px] mt-4 relative justify-center rounded-md h-12'>
           <TextInput
             onChangeText={text => {
               handleInput(text, 'password');
             }}
             secureTextEntry={!showPassword}
-            placeholder="Enter Password"
-            style={{ width: 350, paddingLeft: 16 }}
-          ></TextInput>
+            placeholder='Enter Password'
+            className='pl-4 w-full'
+          />
           <TouchableOpacity
             onPress={() => {
               setShowPassword(prevState => !prevState);
             }}
-            style={{ position: 'absolute', right: 16, top: 8 }}
-          >
-            <Text>X</Text>
+            className='absolute right-4'>
+            <Text>{showPassword ? 'Hide' : 'Show'}</Text>
           </TouchableOpacity>
         </View>
 
@@ -67,24 +46,8 @@ const Login = () => {
           onPress={() => {
             console.log(formData);
           }}
-          style={{
-            backgroundColor: 'blue',
-            width: 350,
-            paddingHorizontal: 20,
-            paddingVertical: 10,
-            marginTop: 20,
-          }}
-        >
-          <Text
-            style={{
-              color: 'white',
-              fontSize: 20,
-              fontWeight: 500,
-              textAlign: 'center',
-            }}
-          >
-            Submit
-          </Text>
+          className='bg-blue-600 w-[350px] px-5 py-3 mt-5 rounded-md'>
+          <Text className='text-white text-xl font-medium text-center'>Submit</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>

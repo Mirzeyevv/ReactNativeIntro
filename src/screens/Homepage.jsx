@@ -1,130 +1,55 @@
-import { Text, View, TouchableOpacity, ScrollView, FlatList, Sectionlist } from 'react-native';
-import { useState } from 'react';
-import { Image } from 'react-native/types_generated/index';
+import { Text, View, TouchableOpacity, ScrollView, FlatList } from 'react-native';
+import List from '../components/homepage/List.jsx';
+import Categories from '../components/homepage/Categories.jsx';
+import Banner from '../components/homepage/Banner.jsx';
 
-const categories = [
-  {
-    id: 1,
-    title: 'Tech',
-  },
-  {
-    id: 2,
-    title: 'Sports',
-  },
-  {
-    id: 3,
-    title: 'Food',
-  },
-  {
-    id: 4,
-    title: 'Movies',
-  },
-  {
-    id: 5,
-    title: 'All',
-  },
-  {
-    id: 6,
-    title: 'Fashioin',
-  },
-];
-
-const products = [
-  {
-    id: 1,
-    title: 'Macbook pro',
-    category: 'Tech',
-    image:
-      'https://www.google.com/imgres?q=laptop%20photo%20link&imgurl=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1611186871348-b1ce696e52c9%3Ffm%3Djpg%26q%3D60%26w%3D3000%26ixlib%3Drb-4.1.0%26ixid%3DM3wxMjA3fDB8MHxzZWFyY2h8MTh8fGxhcHRvcCUyMGNvbXB1dGVyfGVufDB8fDB8fHww&imgrefurl=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Flaptop-computer&docid=6VnAf3suoYvygM&tbnid=Kj4YuirezLXV7M&vet=12ahUKEwitoPvevpCQAxUuAdsEHfuxNlkQM3oECBgQAA..i&w=3000&h=2000&hcb=2&ved=2ahUKEwitoPvevpCQAxUuAdsEHfuxNlkQM3oECBgQAA',
-    price: 1999,
-  },
-  {
-    id: 2,
-    title: 'Laptop',
-    category: 'Tech',
-    image:
-      'https://www.google.com/imgres?q=laptop&imgurl=https%3A%2F%2Fm.media-amazon.com%2Fimages%2FI%2F41T%2B8Ur8XYL._SR290%2C290_.jpg&imgrefurl=https%3A%2F%2Fwww.amazon.com.tr%2Fdizustu-bilgisayarlar%2Fb%3Fie%3DUTF8%26node%3D12601898031&docid=0z-JeB0RZ6wh-M&tbnid=pFPgVam43L4wAM&vet=12ahUKEwiLjZK_vZCQAxUD8LsIHVgbGtcQM3oECBcQAA..i&w=290&h=290&hcb=2&ved=2ahUKEwiLjZK_vZCQAxUD8LsIHVgbGtcQM3oECBcQAA',
-    price: 100,
-  },
-  {
-    id: 3,
-    title: 'Football',
-    category: 'Sports',
-    image:
-      'https://www.google.com/imgres?q=laptop&imgurl=https%3A%2F%2Fm.media-amazon.com%2Fimages%2FI%2F41T%2B8Ur8XYL._SR290%2C290_.jpg&imgrefurl=https%3A%2F%2Fwww.amazon.com.tr%2Fdizustu-bilgisayarlar%2Fb%3Fie%3DUTF8%26node%3D12601898031&docid=0z-JeB0RZ6wh-M&tbnid=pFPgVam43L4wAM&vet=12ahUKEwiLjZK_vZCQAxUD8LsIHVgbGtcQM3oECBcQAA..i&w=290&h=290&hcb=2&ved=2ahUKEwiLjZK_vZCQAxUD8LsIHVgbGtcQM3oECBcQAA',
-    price: 49,
-  },
-  {
-    id: 4,
-    title: 'Pizza',
-    category: 'Food',
-    image:
-      'https://www.google.com/imgres?q=laptop&imgurl=https%3A%2F%2Fm.media-amazon.com%2Fimages%2FI%2F41T%2B8Ur8XYL._SR290%2C290_.jpg&imgrefurl=https%3A%2F%2Fwww.amazon.com.tr%2Fdizustu-bilgisayarlar%2Fb%3Fie%3DUTF8%26node%3D12601898031&docid=0z-JeB0RZ6wh-M&tbnid=pFPgVam43L4wAM&vet=12ahUKEwiLjZK_vZCQAxUD8LsIHVgbGtcQM3oECBcQAA..i&w=290&h=290&hcb=2&ved=2ahUKEwiLjZK_vZCQAxUD8LsIHVgbGtcQM3oECBcQAA',
-    price: 60,
-  },
-];
 const Homepage = () => {
-  return (
-    <ScrollView style={{ flex: 1 }}>
-      <ScrollView horizontal>
-        {categories.map(category => (
-          <TouchableOpacity
-            key={category.id}
-            style={{
-              padding: 10,
-              backgroundColor: 'lightgray',
-              margin: 10,
-              borderRadius: 10,
-            }}>
-            <Text>{category.title}</Text>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
+  const techProducts = [
+    {
+      id: 1,
+      title: 'Macbook Pro',
+      category: 'Tech',
+      image:
+        'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+      price: 1999,
+      type: 'tech',
+    },
+    {
+      id: 2,
+      title: 'Iphone 14 Pro',
+      category: 'Tech',
+      image: 'https://m.media-amazon.com/images/I/61HHS0HrjpL._UF1000,1000_QL80_.jpg',
+      price: 999,
+      type: 'tech',
+    },
+  ];
 
-      <FlatList
-        ListHeaderComponent={() => <Text style={{ fontSize: 24, fontWeight: '700', marginLeft: 16 }}>Products</Text>}
-        ListFooterComponent={() => (
-          <View style={{ padding: 16, alignItems: 'center' }}>
-            <Text>Loading ... </Text>
-          </View>
-        )}
-        ListEmptyComponent={() => (
-          <View>
-            <Text>No products found</Text>
-          </View>
-        )}
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ paddingHorizontal: 16 }}
-        style={{ marginTop: 16 }}
-        horizontal
-        data={products}
-        keyExtractor={item => item.id.toString()}
-        renderItem={({ item }) => (
-          <View
-            style={{
-              marginRight: 16,
-              width: 200,
-              borderWidth: 1,
-              borderColor: 'lightgray',
-              borderRadius: 10,
-              marginBottom: 16,
-            }}>
-            <View
-              style={{
-                width: '100%',
-                height: 150,
-                backgroundColor: 'lightgray',
-                borderTopLeftRadius: 10,
-                borderTopRightRadius: 10,
-              }}
-            />
-            <View style={{ padding: 8 }}>
-              <Text style={{ fontSize: 16, fontWeight: '600' }}>{item.title}</Text>
-              <Text style={{ fontSize: 14, fontWeight: '400', marginVertical: 8 }}>${item.price}</Text>
-            </View>
-          </View>
-        )}
-      />
+  const otherProducts = [
+    {
+      id: 3,
+      title: 'Football',
+      category: 'Sports',
+      image: 'https://contents.mediadecathlon.com/p2154018/k$62eddd5da1ca0c3add68b47c60eee952/football-size-5-first-kick-for-kids-ages-to-12-years-yellow.jpg',
+      price: 49,
+      type: 'other',
+    },
+    {
+      id: 4,
+      title: 'Pizza',
+      category: 'Food',
+      image: 'https://www.tasteofhome.com/wp-content/uploads/2018/01/Homemade-Pizza_EXPS_FT23_376_EC_120123_3.jpg',
+      price: 19,
+      type: 'other',
+    },
+  ];
+
+  return (
+    <ScrollView className='flex-1'>
+      <Banner />
+      <Categories />
+
+      <List data={techProducts} title={'Tech Products'} />
+      <List data={otherProducts} title={'Other Products'} />
     </ScrollView>
   );
 };

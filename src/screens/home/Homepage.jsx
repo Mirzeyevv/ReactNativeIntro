@@ -1,7 +1,8 @@
 import { Text, View, TouchableOpacity, ScrollView, FlatList } from 'react-native';
-import List from '../components/homepage/List.jsx';
-import Categories from '../components/homepage/Categories.jsx';
-import Banner from '../components/homepage/Banner.jsx';
+import List from '../../components/homepage/List.jsx';
+import Categories from '../../components/homepage/Categories.jsx';
+import Banner from '../../components/homepage/Banner.jsx';
+import { Link } from '@react-navigation/native';
 
 const Homepage = () => {
   const techProducts = [
@@ -46,10 +47,13 @@ const Homepage = () => {
   return (
     <ScrollView className='flex-1'>
       <Banner />
+
+      <Link screen="DiscountedItemsScreen" className="underline ml-4 mb-4">See discounted items</Link>
       <Categories />
 
       <List data={techProducts} title={'Tech Products'} />
       <List data={otherProducts} title={'Other Products'} />
+
     </ScrollView>
   );
 };

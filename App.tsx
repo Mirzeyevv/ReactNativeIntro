@@ -1,11 +1,10 @@
-import "./global.css"
+import './global.css';
 import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View} from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
-import Homepage from './src/screens/Homepage';
+import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
+import Homepage from './src/screens/home/Homepage.jsx';
+import Navigator from './src/stacks/Navigator.jsx';
+
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -20,16 +19,16 @@ function App() {
 const AppContent = () => {
   const insets = useSafeAreaInsets();
 
-  return(
-    <View style={{
-      flex: 1,
-      paddingTop: insets.top,
-      paddingBottom: insets.bottom,
-    }}>
-      <Homepage />
+  return (
+    <View
+      style={{
+        flex: 1,
+        paddingTop: insets.top,
+        paddingBottom: insets.bottom,
+      }}>
+      <Navigator />
     </View>
-  )
+  );
 };
-
 
 export default App;

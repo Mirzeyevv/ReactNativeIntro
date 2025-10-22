@@ -1,12 +1,13 @@
 import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import StyledText from '../StyledText.jsx';
 
 const List = ({ data, title }) => {
   const navigation = useNavigation();
 
   return (
     <>
-      <Text className='text-2xl font-semibold ml-4 mb-2 mt-5'>{title}</Text>
+      <StyledText value={title} className='text-2xl font-semibold ml-4 mb-2 mt-5'/>
       <FlatList
         ListHeaderComponent={() => <Text className='text-2xl font-bold ml-4'></Text>}
         ListFooterComponent={() => (
@@ -16,7 +17,7 @@ const List = ({ data, title }) => {
         )}
         ListEmptyComponent={() => (
           <View>
-            <Text className='text-center mt-5'>No products found</Text>
+            <StyledText value={"No products found"} className='text-center mt-5'/>
           </View>
         )}
         showsHorizontalScrollIndicator={false}
@@ -34,8 +35,8 @@ const List = ({ data, title }) => {
             <Image source={{ uri: item.image }} className='w-full h-[150px] rounded-t-[10px]' resizeMode='cover' />
 
             <View className='p-2'>
-              <Text className='text-base font-semibold'>{item.title}</Text>
-              <Text className='text-sm font-normal my-2'>${item.price}</Text>
+              <StyledText value={item.title} className='text-base font-semibold'/>
+              <StyledText value={item.price} className='text-sm font-normal my-2'/>
             </View>
           </TouchableOpacity>
         )}

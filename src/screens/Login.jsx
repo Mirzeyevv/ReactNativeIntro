@@ -1,10 +1,12 @@
 import { Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { useState } from 'react';
+import { useMMKVBoolean, useMMKVString } from 'react-native-mmkv';
 
 const Login = () => {
   const [formData, setFormData] = useState({});
   const [showPassword, setShowPassword] = useState(false);
-
+  const [isAuthenticated, setIsAuthenticated] = useMMKVBoolean('isAuthenticated');
+  
   const handleInput = (text, type) => {
     setFormData(prevState => ({
       ...prevState,
@@ -44,7 +46,7 @@ const Login = () => {
 
         <TouchableOpacity
           onPress={() => {
-            console.log(formData);
+            setIsAuthenticated(true);
           }}
           className='bg-blue-600 w-[350px] px-5 py-3 mt-5 rounded-md'>
           <Text className='text-white text-xl font-medium text-center'>Submit</Text>

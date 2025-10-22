@@ -3,6 +3,9 @@ import List from '../../components/homepage/List.jsx';
 import Categories from '../../components/homepage/Categories.jsx';
 import Banner from '../../components/homepage/Banner.jsx';
 import { Link } from '@react-navigation/native';
+import { useMMKVBoolean } from 'react-native-mmkv';
+import DarkModeToggle from '../../components/DarkModeToggle.jsx';
+import StyledView from '../../components/StyledView.jsx';
 
 const Homepage = () => {
   const techProducts = [
@@ -45,16 +48,21 @@ const Homepage = () => {
   ];
 
   return (
-    <ScrollView className='flex-1'>
-      <Banner />
+    <StyledView>
+      <ScrollView className={`flex-1`}>
+        <DarkModeToggle />
 
-      <Link screen="DiscountedItemsScreen" className="underline ml-4 mb-4">See discounted items</Link>
-      <Categories />
+        <Banner />
 
-      <List data={techProducts} title={'Tech Products'} />
-      <List data={otherProducts} title={'Other Products'} />
+        <Link screen='DiscountedItemsScreen' className='underline ml-4 mb-4'>
+          See discounted items
+        </Link>
+        <Categories />
 
-    </ScrollView>
+        <List data={techProducts} title={'Tech Products'} />
+        <List data={otherProducts} title={'Other Products'} />
+      </ScrollView>
+    </StyledView>
   );
 };
 

@@ -2,11 +2,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import TabStack from './TabStack.jsx';
 import AuthStack from './AuthStack.jsx';
+import { useMMKVBoolean } from 'react-native-mmkv';
 
 const Stack = createNativeStackNavigator();
 
 const Navigator = () => {
-  const isAuthenticated = true;
+  const [isAuthenticated, setIsAuthenticated] = useMMKVBoolean('isAuthenticated');
 
   const linking = {
     prefixes: ['ReactNativeIntro://'],
@@ -39,13 +40,6 @@ const Navigator = () => {
             },
           },
         },
-        Auth: {
-          path: 'auth',
-          initialRouteName: 'LoginScreen',
-          screens: {
-            LoginScreen: 'login',
-          },
-        },
       },
     },
   };
@@ -53,8 +47,8 @@ const Navigator = () => {
   return (
     <NavigationContainer linking={linking}>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {isAuthenticated ? <Stack.Screen name='Tab' component={TabStack} /> : <></>}
-        <Stack.Screen name='Auth' component={AuthStack} />
+        {isAuthenticated ? <Stack.Screen name='Tab' component={TabStack} /> : <Stack.Screen name='Auth' component={AuthStack} />}
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

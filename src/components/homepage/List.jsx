@@ -28,7 +28,7 @@ const List = ({ data, title }) => {
         renderItem={({ item }) => (
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('DetailsScreen', { item });
+              navigation.navigate('DetailsScreen', { itemId : item.id });
             }}
             className='mr-4 w-[200px] border border-gray-300 rounded-[10px] mb-4'>
             <Image source={{ uri: item.image }} className='w-full h-[150px] rounded-t-[10px]' resizeMode='cover' />

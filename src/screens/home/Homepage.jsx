@@ -3,7 +3,6 @@ import List from '../../components/homepage/List.jsx';
 import Categories from '../../components/homepage/Categories.jsx';
 import Banner from '../../components/homepage/Banner.jsx';
 import { Link } from '@react-navigation/native';
-import { useMMKVBoolean } from 'react-native-mmkv';
 import DarkModeToggle from '../../components/DarkModeToggle.jsx';
 import StyledView from '../../components/StyledView.jsx';
 

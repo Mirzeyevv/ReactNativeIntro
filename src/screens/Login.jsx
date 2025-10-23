@@ -1,6 +1,8 @@
 import { Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { useState } from 'react';
 import { useMMKVBoolean, useMMKVString } from 'react-native-mmkv';
+import axios from '../utils/axios.js';
+import { setToken, setRefreshToken } from '../utils/store.js';
 
 const Login = () => {
   const [formData, setFormData] = useState({});
@@ -13,6 +15,16 @@ const Login = () => {
       [type]: text,
     }));
   };
+
+  const handeLogin = async () => {
+    try {
+      const data = await axios.post('helekiyoxdulink', formData);
+      setToken(data.accessToken);
+      setRefreshToken(data.refreshToken);
+    } catch (error) {
+      console.error('Login error:', error);
+    }
+  }
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -47,6 +59,7 @@ const Login = () => {
         <TouchableOpacity
           onPress={() => {
             setIsAuthenticated(true);
+            // handeLogin();
           }}
           className='bg-blue-600 w-[350px] px-5 py-3 mt-5 rounded-md'>
           <Text className='text-white text-xl font-medium text-center'>Submit</Text>

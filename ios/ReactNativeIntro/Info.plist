@@ -33,6 +33,12 @@
 		</dict>
 		<key>NSLocationWhenInUseUsageDescription</key>
 		<string/>
+		<key>NSCameraUsageDescription</key>
+  		<string>In order to take photo for profile picture, camera access is needed</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+ 		<string>In order to choose profile photo, access to gallery is needed</string>
+ 		<key>NSPhotoLibraryAddUsageDescription</key>
+ 		<string>In order to add photo to gallery, access is needed</string>
 		<key>UILaunchStoryboardName</key>
 		<string>LaunchScreen</string>
 		<key>UIRequiredDeviceCapabilities</key>
